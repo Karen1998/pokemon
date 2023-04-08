@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Css
+import './assets/css/reset.css';
+import './assets/css/global.css';
+
+// Jotai provider
+import { Provider } from 'jotai';
+
+// Router
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
     <React.StrictMode>
-        <App />
+        <Provider>
+            <RouterProvider router={router} />
+        </Provider>
     </React.StrictMode>,
 );
 
