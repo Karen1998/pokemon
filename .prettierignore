@@ -1,0 +1,23 @@
+# Ignore artifacts:
+public
+
+# Ignore all HTML files:
+*.html
+
+# IDE
+.idea/
+vcs.xml
+.vscode
+
+# Configs
+.husky/
+.github/
+
+# Packages
+node_modules/
+
+# Build
+build/
+
+# Readme
+README.md
