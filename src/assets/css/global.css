@@ -1,3 +1,14 @@
 * {
     box-sizing: border-box;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.pokemon-details-image {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+}
