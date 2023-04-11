@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Input } from 'antd';
-import { useIsMounted } from 'src/hooks';
 
 interface IProps {
     placeholder?: string;
@@ -11,25 +10,21 @@ interface IProps {
 const Search: React.FC<IProps> = ({ placeholder = '', debounceTime = 350, onChange }) => {
     const [value, setValue] = useState('');
 
-    const isMounted = useIsMounted();
+    const timeout = useRef<any>(null);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
-    };
 
-    useEffect(() => {
-        if (isMounted()) {
-            const timeout = setTimeout(() => {
-                onChange(value);
-            }, debounceTime);
-
-            return () => clearTimeout(timeout);
+        if (timeout.current) {
+            clearTimeout(timeout.current);
         }
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [value]);
+        timeout.current = setTimeout(() => {
+            onChange(e.target.value);
+        }, debounceTime);
+    };
 
-    return <Input placeholder={placeholder} onChange={handleChange} />;
+    return <Input placeholder={placeholder} value={value} onChange={handleChange} />;
 };
 
 export default Search;

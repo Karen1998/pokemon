@@ -9,16 +9,18 @@ import './assets/css/global.css';
 // Jotai provider
 import { Provider } from 'jotai';
 
-// Router
-import { RouterProvider } from 'react-router-dom';
-import { router } from './routes';
+// Router // todo: don't work on build
+// import { RouterProvider } from 'react-router-dom';
+// import { router } from './routes';
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
     <React.StrictMode>
         <Provider>
-            <RouterProvider router={router} />
+            <App />
+            {/* <RouterProvider router={router} /> */}
         </Provider>
     </React.StrictMode>,
 );
